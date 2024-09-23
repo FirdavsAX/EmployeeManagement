@@ -1,0 +1,39 @@
+﻿@model LoginModel
+
+<div class="d-flex justify-content-center align-items-center vh-100">
+    <div class="card shadow-sm" style="width: 400px;">
+        <div class="card-body p-5">
+            <h3 class="card-title text-center mb-4">Login</h3>
+            <form asp-action="Login" method="post">
+                @Html.AntiForgeryToken()
+
+                <div class="form-group mb-3">
+                    <label asp-for="UserName" class="form-label"></label>
+                    <input asp-for="UserName" class="form-control" placeholder="Enter email" />
+                    <span asp-validation-for="UserName" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="Password" class="form-label"></label>
+                    <input asp-for="Password" class="form-control" placeholder="Enter password" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+
+                <div class="d-flex justify-content-between align-items-center gap-2">
+                    <button type="submit" class="btn btn-primary btn-block w-50">Login</button>
+                    <a class="btn btn-success btn-block w-50" asp-action="Register">Register</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+
+</script>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
